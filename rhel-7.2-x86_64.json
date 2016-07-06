@@ -4,7 +4,7 @@
             "boot_command": [
                 "<esc><wait>",
                 "vmlinuz initrd=initrd.img net.ifnames=0 biosdevname=0 ",
-                "ks=http://{{.HTTPIP}}:{{.HTTPPort}}/rhel-7.0-x86_64/ks.cfg",
+                "ks=http://{{.HTTPIP}}:{{.HTTPPort}}/rhel-7.2-x86_64/ks.cfg",
                 "<enter>"
             ],
             "boot_wait": "5s",
@@ -84,8 +84,8 @@
         }
     ],
     "variables": {
-        "iso_sha256": "85a9fedc2bf0fc825cc7817056aa00b3ea87d7e111e0cf8de77d3ba643f8646c",
-        "iso_url": "{{env `ISO_LOCATION`}}/rhel-server-7.0-x86_64-dvd.iso",
-        "vm_name": "rhel-7.0-vbox"
+        "iso_sha256": "03f3a0291634335f6995534d829bd21ffaa0d000004dfeb1b2fb81052d64a4d5",
+        "iso_url": "{{env `ISO_LOCATION`}}/rhel-server-7.2-x86_64-dvd.iso",
+        "vm_name": "rhel-7.2-vbox"
     }
 }

@@ -11,8 +11,7 @@
             "disk_size": "40960",
             "hard_drive_interface": "sata",
             "guest_additions_path": "/tmp/VBoxGuestAdditions_{{.Version}}.iso",
-            "guest_additions_sha256": "{{user `guest_sha256`}}",
-            "guest_additions_url": "{{user `guest_url`}}/VBoxGuestAdditions_{{.Version}}.iso",
+            "guest_additions_url": "http://download.virtualbox.org/virtualbox/{{.Version}}/VBoxGuestAdditions_{{.Version}}.iso",
             "guest_os_type": "RedHat_64",
             "http_directory": "http",
             "iso_checksum": "{{user `iso_sha256`}}",
@@ -85,8 +84,6 @@
         }
     ],
     "variables": {
-        "guest_sha256": "7bd528cd4d973be13a0bcd3c063981ca015a5afb8b4a4acd75ce39938eed95f2",
-        "guest_url": "{{env `ISO_LOCATION`}}",
         "iso_sha256": "3685468ec6cdcb70dfc85ebbc164da427dc2d762644c3c2ee1520f4f661c15ce",
         "iso_url": "{{env `ISO_LOCATION`}}/rhel-server-7.1-x86_64-dvd.iso",
         "vm_name": "rhel-7.1-vbox"
