@@ -1,10 +1,10 @@
 # Packer manifests
 
-Currently availabable:
+Currently available:
 
-* RHEL 7.0 x86_64 (Vagrant)
-* RHEL 7.1 x86_64 (Vagrant)
-* RHEL 7.2 x86_64 (Vagrant)
+* RHEL 7.0 x86_64 (Vagrant, QEMU)
+* RHEL 7.1 x86_64 (Vagrant, QEMU)
+* RHEL 7.2 x86_64 (Vagrant, QEMU)
 
 ## Usage
 
@@ -16,4 +16,5 @@ ISO_LOCATION=http://path.to.isos/dir/ packer build manifesto.json
 
 * Packer
 * VirtualBox
+* QEMU
 

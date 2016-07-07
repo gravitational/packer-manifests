@@ -51,5 +51,9 @@ rm -rf /tmp/*.*
 dd if=/dev/zero of=/EMPTY bs=1M
 rm -f /EMPTY
 
+# Zero space on boot partition
+dd if=/dev/zero of=/boot/EMPTY bs=1M
+rm -f /boot/EMPTY
+
 # Clear history
 history -c

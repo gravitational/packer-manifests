@@ -4,19 +4,19 @@
             "boot_command": [
                 "<esc><wait>",
                 "vmlinuz initrd=initrd.img net.ifnames=0 biosdevname=0 ",
-                "ks=http://{{.HTTPIP}}:{{.HTTPPort}}/rhel-7.2-x86_64/ks.cfg",
+                "ks=http://{{.HTTPIP}}:{{.HTTPPort}}/rhel-7.X-vagrant/ks.cfg",
                 "<enter>"
             ],
             "boot_wait": "5s",
             "disk_size": "40960",
-            "hard_drive_interface": "sata",
             "guest_additions_path": "/tmp/VBoxGuestAdditions_{{.Version}}.iso",
             "guest_additions_url": "http://download.virtualbox.org/virtualbox/{{.Version}}/VBoxGuestAdditions_{{.Version}}.iso",
             "guest_os_type": "RedHat_64",
+            "hard_drive_interface": "sata",
             "http_directory": "http",
-            "iso_checksum": "{{user `iso_sha256`}}",
             "iso_checksum_type": "sha256",
-            "iso_url": "{{user `iso_url`}}",
+            "iso_checksum_url": "{{user `checksum_url`}}",
+            "iso_url": "{{user `url`}}",
             "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
             "ssh_password": "vagrant",
             "ssh_username": "vagrant",
@@ -84,8 +84,8 @@
         }
     ],
     "variables": {
-        "iso_sha256": "03f3a0291634335f6995534d829bd21ffaa0d000004dfeb1b2fb81052d64a4d5",
-        "iso_url": "{{env `ISO_LOCATION`}}/rhel-server-7.2-x86_64-dvd.iso",
-        "vm_name": "rhel-7.2-vbox"
+        "checksum_url": "{{env `ISO_LOCATION`}}/SHA256SUMS",
+        "url": "{{env `ISO_LOCATION`}}/rhel-server-7.1-x86_64-dvd.iso",
+        "vm_name": "rhel-7.1-vbox"
     }
 }
