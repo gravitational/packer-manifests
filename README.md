@@ -5,6 +5,7 @@ Currently available:
 * RHEL 7.0 x86_64 (Vagrant, QEMU)
 * RHEL 7.1 x86_64 (Vagrant, QEMU)
 * RHEL 7.2 x86_64 (Vagrant, QEMU)
+* CentOS 7.2.1511 x86_64 (Vagrant, QEMU)
 
 ## Usage
 
