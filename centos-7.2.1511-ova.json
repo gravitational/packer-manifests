@@ -1,0 +1,91 @@
+{
+    "builders": [
+        {
+            "boot_command": [
+                "<esc><wait>",
+                "vmlinuz initrd=initrd.img net.ifnames=0 biosdevname=0 ",
+                "ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-7.X-ova/ks.cfg",
+                "<enter>"
+            ],
+            "boot_wait": "5s",
+            "disk_size": "40960",
+            "format": "ova",
+            "guest_additions_path": "/tmp/VBoxGuestAdditions_{{.Version}}.iso",
+            "guest_additions_url": "http://download.virtualbox.org/virtualbox/{{.Version}}/VBoxGuestAdditions_{{.Version}}.iso",
+            "guest_os_type": "RedHat_64",
+            "hard_drive_interface": "sata",
+            "http_directory": "http",
+            "iso_checksum_type": "sha256",
+            "iso_checksum_url": "{{user `checksum_url`}}",
+            "iso_url": "{{user `url`}}",
+            "output_directory": "output/",
+            "shutdown_command": "echo 'anypoint' | sudo -S shutdown -P now",
+            "ssh_password": "anypoint",
+            "ssh_username": "anypoint",
+            "ssh_wait_timeout": "20m",
+            "type": "virtualbox-iso",
+            "vboxmanage": [
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--memory",
+                    "1024"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--cpus",
+                    "2"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--ioapic",
+                    "on"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--pae",
+                    "on"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--rtcuseutc",
+                    "on"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--bioslogodisplaytime",
+                    "1"
+                ]
+            ],
+            "virtualbox_version_file": ".virtualbox-version",
+            "vm_name": "{{user `vm_name`}}"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "file",
+            "source": "anypoint-1.5.0-rc4-30-g80b56c2-installer.tar.gz",
+            "destination": "/tmp/anypoint-1.5.0.tar.gz"
+        },
+        {
+            "execute_command": "echo 'anypoint' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+            "scripts": [
+                "scripts/ova.sh",
+                "scripts/sshd.sh",
+                "scripts/virtualbox.sh",
+                "scripts/cleanup.sh"
+            ],
+            "type": "shell"
+        }
+    ],
+    "variables": {
+        "checksum_url": "{{env `ISO_LOCATION`}}/sha256sum.txt",
+        "url": "{{env `ISO_LOCATION`}}/CentOS-7-x86_64-DVD-1511.iso",
+        "vm_name": "anypoint-1.5.0-centos-7.2.1511"
+    }
+}
