@@ -69,8 +69,8 @@
     "provisioners": [
         {
             "type": "file",
-            "source": "anypoint-1.5.0-rc4-30-g80b56c2-installer.tar.gz",
-            "destination": "/tmp/anypoint-1.5.0.tar.gz"
+            "source": "anypoint-installer.tar.gz",
+            "destination": "/tmp/anypoint-installer.tar.gz"
         },
         {
             "execute_command": "echo 'anypoint' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
